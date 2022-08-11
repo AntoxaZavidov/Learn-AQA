@@ -1,6 +1,7 @@
 import requests
 
 
-responce = requests.get("https://as.happify.com/api/happifiers/topics/")
+payload = {"name": "Terminator"}
+responce = requests.get("https://playground.learnqa.ru/api/hello", params=payload)
 print(responce.text)
 
