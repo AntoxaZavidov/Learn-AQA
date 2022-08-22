@@ -1,13 +1,12 @@
-import json
+import requests
 
-string_as_json_format = '{"answer": "Hello, user"}'
-obj = json.loads(string_as_json_format)
+payload = {"login": "secret_login", "password": "secret_pass"}
+response1 = requests.post("https://playground.learnqa.ru/api/get_auth_cookie", data = payload)
 
-key = "answer"
+cookie_value = response1.cookies.get('auth_cookie')
+cookies = {}
+if cookie_value is not None:
+    cookies.update({'auth_cookie': cookie_value})
+response2  = requests.post("https://playground.learnqa.ru/api/check_auth_cookie", cookies = cookies)
 
-if key in obj:
-    print(obj[key])
-else:
-    print(f"Ключа {key} в JSON нет")
-
-
+print(response2.text)
