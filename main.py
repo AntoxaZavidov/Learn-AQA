@@ -3,6 +3,7 @@ import requests
 
 responce = requests.get("https://playground.learnqa.ru/api/get_text")
 print(responce.text)
+print(responce.status_code)
 
 try:
     parsed_response_text = responce.json()

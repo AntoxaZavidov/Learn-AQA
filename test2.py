@@ -1,14 +1,13 @@
-class TestExample:
-    def test_check_math(self):
-        a = 5
-        b = 9
-        expected_sum = 14
-        assert a + b == expected_sum, f"Summ of variables a and b is not equal to {expected_sum}"
+import requests
 
 
-    def test_check_math2(self):
-        a = 5
-        b = 12
-        expected_sum = 14
-        assert a+b == expected_sum, f"Summ of variables a and b is not equal to {expected_sum}"
+payload = {"login": "zavidov+lvtest151011@alarstudios.com", "pass": "Password_1"}
+response = requests.post("https://stage.happify.com/login", data=payload)
+
+print(response.text)
+print()
+print(response.status_code)
+print()
+print(response.cookies)
+
 
