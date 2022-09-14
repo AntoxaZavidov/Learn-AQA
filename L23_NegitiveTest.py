@@ -39,7 +39,7 @@ class TestUserAuth:
         ("no_token")
     ]
     @pytest.mark.parametrize('condition', exclude_params)
-    def test_auth_negative_check(self, condition):
+    def test_negative_auth_check(self, condition):
         data = {
             'email': 'vinkotov@example.com',
             'password': '1234'
@@ -64,7 +64,7 @@ class TestUserAuth:
                 cookies={"auth_sid": auth_sid}
             )
         assert "user_id" in response1.json(), "There is not user id in second response"
-        user_id_from_check_method == response2.json()["user_id"]
+        user_id_from_check_method = response2.json()["user_id"]
         assert user_id_from_check_method == 0, f"User is authorized with condition {condition}"
 
 
